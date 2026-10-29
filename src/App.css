@@ -1,0 +1,766 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+/* =========================
+   COLOURS
+========================= */
+
+:root {
+  --plum-darkest: #14040f;
+  --plum-dark: #1f0a1c;
+  --plum: #2d0f28;
+  --plum-light: #3d1636;
+
+  --pink-soft: #f7c9d8;
+  --pink: #f0a8c2;
+  --pink-bright: #e88fb2;
+  --pink-deep: #c96b8f;
+
+  /* Cover card colours */
+  --cover-pink: #f5bcd0;
+  --cover-pink-dark: #e894b3;
+  --cover-pink-light: #ffd6e2;
+  --cover-plum-text: #4a1338;
+
+  --gold: #e0bf7a;
+  --gold-soft: #f1d9a0;
+  --cream: #fff4f8;
+  --text: #fbe4ee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--plum-darkest);
+}
+
+button {
+  font: inherit;
+}
+
+/* =========================
+   PINK & DARK PLUM BACKGROUND
+========================= */
+
+.welcome-page {
+  min-height: 100vh;
+  min-height: 100svh;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 50px 20px 30px;
+
+  background:
+    radial-gradient(
+      ellipse at 12% 10%,
+      rgba(232, 143, 178, 0.28),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 88% 90%,
+      rgba(201, 107, 143, 0.22),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      #14040f 0%,
+      #2a0d24 45%,
+      #3a1533 70%,
+      #1a0617 100%
+    );
+}
+
+/* =========================
+   BACKGROUND GLOW
+========================= */
+
+.glow {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glow-one {
+  top: -120px;
+  left: -100px;
+  background: var(--pink-bright);
+}
+
+.glow-two {
+  right: -100px;
+  bottom: -120px;
+  background: var(--pink-deep);
+}
+
+/* =========================
+   FLOATING HEARTS (behind card)
+========================= */
+
+.floating-hearts {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: 0;
+  color: var(--pink-soft);
+  font-size: 22px;
+  text-shadow: 0 0 14px rgba(247, 201, 216, 0.55);
+  will-change: transform, opacity;
+}
+
+/* =========================
+   FLOATING FLOWERS (in front of card)
+========================= */
+
+.floating-flowers {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.floating-flower {
+  position: absolute;
+  bottom: 0;
+  color: var(--pink);
+  text-shadow:
+    0 0 10px rgba(240, 168, 194, 0.6),
+    0 0 22px rgba(224, 191, 122, 0.25);
+  will-change: transform, opacity;
+}
+
+/* =========================
+   INVITATION CARD (dark plum — pages 2 & 3)
+========================= */
+
+.invitation-card {
+  position: relative;
+  z-index: 2;
+
+  width: min(100%, 620px);
+  padding: 42px 35px 34px;
+
+  text-align: center;
+
+  background: linear-gradient(
+    155deg,
+    rgba(45, 15, 40, 0.94),
+    rgba(26, 6, 23, 0.96)
+  );
+
+  border: 1px solid rgba(240, 168, 194, 0.45);
+  border-radius: 8px;
+
+  box-shadow:
+    0 25px 90px rgba(0, 0, 0, 0.55),
+    0 0 45px rgba(232, 143, 178, 0.15),
+    inset 0 0 0 5px rgba(247, 201, 216, 0.03);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* =========================
+   COVER CARD (Page 1 — PINK)
+========================= */
+
+.cover-card {
+  background: linear-gradient(
+    150deg,
+    var(--cover-pink-light) 0%,
+    var(--cover-pink) 45%,
+    var(--cover-pink-dark) 100%
+  );
+
+  border: 2px solid var(--gold-soft);
+  border-radius: 14px;
+
+  padding: 55px 35px 45px;
+
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(240, 168, 194, 0.5),
+    inset 0 0 0 6px rgba(255, 255, 255, 0.25),
+    inset 0 0 40px rgba(201, 107, 143, 0.25);
+
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Layered decorations */
+.cover-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.cover-decor-item {
+  position: absolute;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.cover-decor-flower {
+  color: #ffffff;
+  text-shadow:
+    0 0 12px rgba(255, 255, 255, 0.85),
+    0 0 24px rgba(240, 168, 194, 0.7);
+}
+
+.cover-decor-heart {
+  color: #b93b6c;
+  text-shadow:
+    0 0 12px rgba(185, 59, 108, 0.6),
+    0 0 22px rgba(255, 255, 255, 0.4);
+}
+
+/* Everything else above the decor */
+.cover-content {
+  position: relative;
+  z-index: 4;
+}
+
+.cover-content .top-decoration,
+.cover-content .bottom-decoration {
+  color: var(--cover-plum-text);
+  opacity: 0.75;
+}
+
+.cover-content .small-heading {
+  color: var(--cover-plum-text);
+  opacity: 0.85;
+}
+
+.cover-content .gold-divider {
+  color: var(--cover-plum-text);
+}
+
+.cover-content .gold-divider span {
+  background: var(--cover-plum-text);
+  opacity: 0.7;
+}
+
+.cover-card h1 {
+  margin: 20px 0 10px;
+  color: var(--cover-plum-text);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(44px, 9vw, 68px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: 0.5px;
+  text-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.35),
+    0 6px 24px rgba(74, 19, 56, 0.25);
+}
+
+.cover-card h1 em {
+  display: inline-block;
+  font-weight: 500;
+  font-style: italic;
+  color: #7a1f4a;
+}
+
+.cover-question {
+  margin: 26px 0 30px;
+  color: var(--cover-plum-text);
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.cover-question em {
+  font-style: italic;
+  color: #7a1f4a;
+  font-weight: 500;
+}
+
+/* Cover button — dark plum on pink */
+.cover-card .open-button {
+  background: linear-gradient(135deg, #6b1d43, #3a0f28);
+  border: 1px solid var(--gold-soft);
+  color: var(--cream);
+
+  box-shadow:
+    0 10px 30px rgba(58, 15, 40, 0.45),
+    0 0 20px rgba(240, 168, 194, 0.4);
+}
+
+.cover-card .open-button:hover {
+  background: linear-gradient(135deg, #8a2857, #4b1434);
+  border-color: var(--gold);
+}
+
+.cover-date {
+  margin: 22px 0 0;
+  color: var(--cover-plum-text);
+  font-size: 11px;
+  letter-spacing: 2px;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+/* =========================
+   DECORATIONS (shared)
+========================= */
+
+.top-decoration,
+.bottom-decoration {
+  color: var(--gold);
+  font-size: 19px;
+  letter-spacing: 7px;
+}
+
+.small-heading {
+  margin: 22px 0 10px;
+  color: var(--pink);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+/* =========================
+   TEXT AND HEADINGS
+========================= */
+
+.intro-text {
+  margin: 0 0 12px;
+  color: #f5cfe0;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.invitation-card h1 {
+  margin: 10px 0 18px;
+  color: var(--cream);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(37px, 7vw, 55px);
+  font-weight: 500;
+  line-height: 1.17;
+  text-shadow: 0 3px 22px rgba(0, 0, 0, 0.3);
+}
+
+.invitation-card h1 em {
+  color: var(--pink);
+  font-weight: 400;
+}
+
+.gold-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 22px 0;
+  color: var(--gold);
+  font-size: 17px;
+}
+
+.gold-divider span {
+  width: 53px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.couple-name {
+  margin: 15px 0;
+  color: var(--pink);
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+}
+
+.welcome-message {
+  max-width: 400px;
+  margin: 18px auto 26px;
+  color: #fbe4ee;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+/* =========================
+   PHOTO FRAME
+========================= */
+
+.photo-frame {
+  width: 190px;
+  height: 190px;
+  margin: 24px auto 22px;
+
+  border-radius: 50%;
+  padding: 6px;
+
+  background: linear-gradient(
+    145deg,
+    var(--gold),
+    var(--pink),
+    var(--gold)
+  );
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.45),
+    0 0 30px rgba(240, 168, 194, 0.3);
+}
+
+.couple-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+
+  border: 3px solid rgba(26, 6, 23, 0.9);
+}
+
+/* =========================
+   BUTTONS (shared)
+========================= */
+
+.open-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+
+  min-height: 49px;
+  padding: 13px 25px;
+
+  border: 1px solid var(--pink);
+  border-radius: 40px;
+
+  background: linear-gradient(135deg, #d97a9e, #9c3f66);
+  color: #fff4f8;
+
+  cursor: pointer;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.35);
+
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.open-button:hover {
+  background: linear-gradient(135deg, #ec97b5, #b24c78);
+  border-color: var(--gold-soft);
+
+  box-shadow:
+    0 9px 30px rgba(0, 0, 0, 0.4),
+    0 0 22px rgba(240, 168, 194, 0.25);
+}
+
+.open-button:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 4px;
+}
+
+.text-button {
+  margin-top: 22px;
+  padding: 6px 4px;
+
+  border: none;
+  background: none;
+  color: #e7b9cb;
+
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  transition: color 0.2s ease;
+}
+
+.text-button:hover {
+  color: var(--pink);
+}
+
+.text-button:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* =========================
+   DATE AND DECORATIONS
+========================= */
+
+.date-note {
+  margin: 23px 0 0;
+  color: #d8a3b9;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.bottom-decoration {
+  margin-top: 25px;
+  font-size: 15px;
+}
+
+/* =========================
+   OPENED CARD
+========================= */
+
+.opened-card {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.opened-heart {
+  color: var(--pink);
+  font-size: 60px;
+  text-shadow: 0 0 24px rgba(240, 168, 194, 0.35);
+}
+
+.opened-card .small-heading {
+  margin-top: 15px;
+}
+
+.opened-card h1 {
+  margin-top: 25px;
+}
+
+/* =========================
+   LETTER PAGE
+========================= */
+
+.letter-card {
+  padding-top: 50px;
+  padding-bottom: 48px;
+}
+
+.letter-card h1 {
+  margin-top: 20px;
+}
+
+.letter-text {
+  max-width: 440px;
+  margin: 0 auto 18px;
+  color: #fbe4ee;
+  font-size: 14px;
+  line-height: 1.95;
+  text-align: left;
+}
+
+.verse {
+  max-width: 440px;
+  margin: 28px auto 28px;
+  padding: 18px 22px;
+
+  border-left: 2px solid var(--pink);
+  border-right: 2px solid var(--pink);
+  border-radius: 4px;
+
+  background: rgba(240, 168, 194, 0.06);
+
+  color: var(--pink-soft);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.verse cite {
+  display: block;
+  margin-top: 10px;
+  color: var(--gold);
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.signature {
+  margin: 22px 0 26px;
+  color: #fbe4ee;
+  font-size: 13px;
+  line-height: 1.9;
+  letter-spacing: 0.5px;
+}
+
+.signature span {
+  display: inline-block;
+  margin-top: 6px;
+  color: var(--pink);
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.page-footer {
+  position: relative;
+  z-index: 2;
+  margin-top: 27px;
+  color: var(--pink);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+
+@media (max-width: 480px) {
+  .welcome-page {
+    padding: 30px 14px 22px;
+  }
+
+  .invitation-card {
+    padding: 30px 20px 26px;
+  }
+
+  .cover-card {
+    padding: 40px 20px 35px;
+  }
+
+  .cover-card h1 {
+    font-size: clamp(40px, 11vw, 56px);
+  }
+
+  .cover-question {
+    font-size: 17px;
+    margin: 20px 0 24px;
+  }
+
+  .invitation-card h1 {
+    font-size: clamp(34px, 9vw, 45px);
+  }
+
+  .couple-name {
+    font-size: 22px;
+  }
+
+  .welcome-message {
+    font-size: 13px;
+  }
+
+  .small-heading {
+    letter-spacing: 2px;
+  }
+
+  .page-footer {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+
+  .letter-text,
+  .verse {
+    font-size: 13px;
+    line-height: 1.85;
+  }
+
+  .verse {
+    padding: 14px 16px;
+  }
+
+  .signature span {
+    font-size: 15px;
+  }
+
+  .photo-frame {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* =========================
+   REDUCED-MOTION ACCESSIBILITY
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
+/* =========================
+   SOUND TOGGLE BUTTON
+========================= */
+
+.sound-toggle {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 50;
+
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+  border: 1px solid rgba(240, 168, 194, 0.55);
+  background: rgba(26, 6, 23, 0.7);
+
+  color: var(--pink);
+  font-size: 18px;
+  cursor: pointer;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 0.2s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.sound-toggle:hover {
+  transform: scale(1.08);
+  background: rgba(45, 15, 40, 0.85);
+  border-color: var(--gold-soft);
+  color: var(--gold-soft);
+}
+
+.sound-toggle:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .sound-toggle {
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+}
